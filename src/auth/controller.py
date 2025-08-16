@@ -10,6 +10,10 @@ router = APIRouter(
 def sign_in(): 
     return AuthService().login_url()
 
+@router.delete("/logout/{user_id}")
+def sign_out(user_id: int):
+    return AuthService().logout(user_id)
+
 @router.get("/callback")
 async def callback(request: Request): 
     return await AuthService().callback(request)
